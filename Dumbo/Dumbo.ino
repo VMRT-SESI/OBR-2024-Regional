@@ -59,6 +59,21 @@ unsigned int sensorExtEsquerda = 0,
     sensorDireita = 0, 
     sensorExtDireita = 0;
 
+// Sensor de cor TCS230 - Esquerda
+const int sensor_verde_esq_S0 = 40;
+const int sensor_verde_esq_S1 = 42;
+const int sensor_verde_esq_S2 = 44;
+const int sensor_verde_esq_S3 = 46;
+const int sensor_verde_esq_OUT = 48;
+
+// Sensor de cor TCS230 - Direita
+const int sensor_verde_dir_S0 = 40;
+const int sensor_verde_dir_S1 = 42;
+const int sensor_verde_dir_S2 = 44;
+const int sensor_verde_dir_S3 = 46;
+const int sensor_verde_dir_OUT = 48;
+
+
 // Sensores Ultrasônicos
 #define T_PIN_frente 25
 #define E_PIN_frente 24
@@ -121,12 +136,27 @@ void setup(){
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);
 
+  // Sensor de refletância
   pinMode(sensor1, INPUT);
   pinMode(sensor2, INPUT);
   pinMode(sensor3, INPUT);
   pinMode(sensor4, INPUT);
   pinMode(sensor5, INPUT);
 
+  // Sensores de cor
+  pinMode(sensor_verde_esq_S0, OUTPUT);
+  pinMode(sensor_verde_esq_S1, OUTPUT);
+  pinMode(sensor_verde_esq_S2, OUTPUT);
+  pinMode(sensor_verde_esq_S3, OUTPUT);
+  pinMode(sensor_verde_esq_OUT, INPUT);
+
+  pinMode(sensor_verde_dir_S0, OUTPUT);
+  pinMode(sensor_verde_dir_S1, OUTPUT);
+  pinMode(sensor_verde_dir_S2, OUTPUT);
+  pinMode(sensor_verde_dir_S3, OUTPUT);
+  pinMode(sensor_verde_dir_OUT, INPUT);
+
+  // Leds
   pinMode(led_detecta_obstaculo_amarelo, OUTPUT);
   pinMode(led_detecta_rampa_amarelo, OUTPUT);
   pinMode(led_detecta_resgate, OUTPUT);
@@ -139,10 +169,12 @@ void setup(){
   pinMode(led_detecta_direta_verde, OUTPUT);
   pinMode(led_detecta_esquerda_verde, OUTPUT);
 
+  // Motores
   s.attach(motor_tower_garra);
   s.attach(motor_microServo_garra);
   s.write(0);
 
+  // Botão
   pinMode(push_button_start, INPUT_PULLUP);
 }
 
