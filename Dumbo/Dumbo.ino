@@ -33,8 +33,8 @@ stepperMotor motor_direita_frente(
 );
 
 stepperMotor motor_direta_fundo(
-  2,    // Step pin 
-  5,    // Direction pin
+  12,    // Step pin 
+  13,    // Direction pin
   8,    // Enable pin
   400,  // Resolution
   4490, // Minimum velocity
