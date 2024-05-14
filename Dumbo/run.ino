@@ -11,12 +11,7 @@ void run() {
 }
 
 void aguardo() {
-  digitalWrite(led_leitura_preto_vermelho, HIGH);
-  digitalWrite(led_curva_direita_vermelho, HIGH);
-  digitalWrite(led_curva_esquerda_vermelho, HIGH);
-  delay(2500);
-  digitalWrite(led_leitura_preto_vermelho, LOW);
-  digitalWrite(led_curva_direita_vermelho, LOW);
-  digitalWrite(led_curva_esquerda_vermelho, LOW);
-  delay(1000);
+  led_blink(led_leitura_preto_vermelho);
+  led_blink(led_curva_direita_vermelho);
+  led_blink(led_curva_esquerda_vermelho);
 }

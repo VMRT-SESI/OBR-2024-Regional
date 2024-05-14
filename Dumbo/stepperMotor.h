@@ -1,3 +1,5 @@
+/* Classe dos motores de passo*/
+
 class stepperMotor
 {
 private:

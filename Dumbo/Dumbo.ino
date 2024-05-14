@@ -132,7 +132,8 @@ int posicao_inicial = 0;
 
 void setup(){
   Serial.begin(115200);
-  Wire.begin();;
+  setupMotors(0);
+  Wire.begin();
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);
 

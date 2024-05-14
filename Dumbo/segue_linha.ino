@@ -5,20 +5,19 @@ void segue_linha() {
   sensorEsquerda = analogRead(sensor4);
   sensorExtDireita = analogRead(sensor5);
 
-  //Serial.println(sensorEsquerda);
   if((sensorEsquerda > preto) && (sensorDireita > preto)) {
-    //andarFrente(velocidade);
+    andar_frente(velocidade_constate);
   }else if((sensorEsquerda < preto) && (sensorDireita > preto)) {
     if((sensorMeio > preto) && (sensorExtDireita > preto)) {
-      //curvaDireita(velocidade);
+      curva_direita(velocidade_curva);
     } else {
-      //curvaDireita(velocidade);
+      curva_direita(velocidade_curva);
     }
   } else if((sensorEsquerda > preto) && (sensorDireita < preto)){
     if((sensorMeio > preto) && (sensorEsquerda > preto) && (sensorExtEsquerda > preto)) {
-      //curvaEsquerda(velocidade);
+      curva_esquerda(velocidade_curva);
     } else {
-      //curvaEsquerda(velocidade);
+      curva_esquerda(velocidade_curva);
     }
   }  else if(
     (sensorExtEsquerda < preto) && 
@@ -27,11 +26,10 @@ void segue_linha() {
     (sensorDireita < preto) && 
     (sensorExtDireita < preto)
     ) {
-      //andarFrente(20);
+      andar_frente(20);
       delay(2500);
-      // andarFrente(velocidade);
-      Serial.println("2");
+      andar_frente(velocidade_constate);
   } else {
-    // andarFrente(velocidade);
+    andar_frente(velocidade_constate);
   }
 }
