@@ -6,39 +6,39 @@
 
 // Definição dos motores
 stepperMotor motor_esquerda_frente(
-  3,    // Step pin
-  6,    // Direction pin
-  8,    // Enable pin
-  400,  // Resolution
-  4490, // Minimum velocity
-  256   // Maximum velocity
+  3,     // Step pin
+  6,     // Direction pin
+  8,     // Enable pin
+  400,   // Resolution
+  4490,  // Minimum velocity
+  256    // Maximum velocity
 );
 
 stepperMotor motor_esquerda_fundo(
-  2,    // Step pin
-  5,    // Direction pin
-  8,    // Enable pin
-  400,  // Resolution
-  4490, // Minimum velocity
-  256   // Maximum velocity
+  2,     // Step pin
+  5,     // Direction pin
+  8,     // Enable pin
+  400,   // Resolution
+  4490,  // Minimum velocity
+  256    // Maximum velocity
 );
 
 stepperMotor motor_direita_frente(
-  4,    // Step pin
-  7,    // Direction pin
-  8,    // Enable pin
-  400,  // Resolution
-  4490, // Minimum velocity
-  256   // Maximum velocity
+  4,     // Step pin
+  7,     // Direction pin
+  8,     // Enable pin
+  400,   // Resolution
+  4490,  // Minimum velocity
+  256    // Maximum velocity
 );
 
 stepperMotor motor_direta_fundo(
-  12,    // Step pin 
+  12,    // Step pin
   13,    // Direction pin
-  8,    // Enable pin
-  400,  // Resolution
-  4490, // Minimum velocity
-  256   // Maximum velocity
+  8,     // Enable pin
+  400,   // Resolution
+  4490,  // Minimum velocity
+  256    // Maximum velocity
 );
 
 // Giroscópio
@@ -46,18 +46,18 @@ MPU6050 mpu6050(Wire);
 double gyro;
 
 // Sensores de refletância - Pinagem
-int sensor1 = A11;        //Sensor extrema direita
-int sensor2 = A12;        //Sensor direta
-int sensor3 = A13;        //Sensor meio
-int sensor4 = A14;        //Sensor esquerda
-int sensor5 = A15;        //Sensor extrema esquerda
+int sensor1 = A11;  //Sensor extrema direita
+int sensor2 = A12;  //Sensor direta
+int sensor3 = A13;  //Sensor meio
+int sensor4 = A14;  //Sensor esquerda
+int sensor5 = A15;  //Sensor extrema esquerda
 
 // Sensores de refletância - Armazenagem
 unsigned int sensorExtEsquerda = 0,
-    sensorEsquerda = 0,
-    sensorMeio = 0, 
-    sensorDireita = 0, 
-    sensorExtDireita = 0;
+             sensorEsquerda = 0,
+             sensorMeio = 0,
+             sensorDireita = 0,
+             sensorExtDireita = 0;
 
 // Sensor de cor TCS230 - Esquerda
 const int sensor_verde_esq_S0 = 40;
@@ -110,8 +110,8 @@ int posicao_inicial = 0;
 
 // =================================== //
 //             REGULAGEM              //
-  int preto = 15;
-  int verde = 50;
+int preto = 15;
+int verde = 50;
 // =================================== //
 
 // =================================== //
@@ -119,6 +119,16 @@ int posicao_inicial = 0;
   int velocidade_curva = 50;
   int velocidade_rampa = 50;
   int velocidade_constate = 50;
+
+  unsigned int valorVermelho_sensor_esquerdo = 0;
+  unsigned int valorVerde_sensor_esquerdo = 0;
+  unsigned int valorAzul_sensor_esquerdo = 0;
+  unsigned int valorBranco_sensor_esquerdo = 0;
+
+  unsigned int valorVermelho_sensor_direito = 0;
+  unsigned int valorVerde_sensor_direito = 0;
+  unsigned int valorAzul_sensor_direito = 0;
+  unsigned int valorBranco_sensor_direito = 0;
 
   float GiroY = 0.0;
   float GiroZ = 0.0;
@@ -130,7 +140,7 @@ int posicao_inicial = 0;
   bool verifica_regate = false;
 // =================================== //
 
-void setup(){
+void setup() {
   Serial.begin(115200);
   setupMotors(0);
   Wire.begin();
@@ -177,10 +187,18 @@ void setup(){
 
   // Botão
   pinMode(push_button_start, INPUT_PULLUP);
+
+
+  // Sensores de cor
+  digitalWrite(sensor_verde_esq_S0, HIGH);
+  digitalWrite(sensor_verde_esq_S1, LOW);
+
+  digitalWrite(sensor_verde_dir_S0, HIGH);
+  digitalWrite(sensor_verde_dir_S1, LOW);
 }
 
 void loop() {
-  if(digitalRead(push_button_start) == LOW) {
+  if (digitalRead(push_button_start) == LOW) {
     estado_botao = !estado_botao;
     run();
   } else {
