@@ -1,3 +1,6 @@
+/* Detecção e retorno dos valores coletados pelos sensores HCSR04 - Ultrasônicos
+*/
+
 float distancia_frente() {
   float cmMsec = ultra_frente.measureDistanceCm();
   return cmMsec;

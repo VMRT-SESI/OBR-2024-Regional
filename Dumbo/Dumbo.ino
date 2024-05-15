@@ -116,16 +116,16 @@ int posicao_inicial = 0;
 
 // =================================== //
 //             VARIÁVEIS              //
-  int velocidade_curva;
-  int velocidade_rampa;
-  int velocidade_constate;
+  int velocidade_curva = 50;
+  int velocidade_rampa = 50;
+  int velocidade_constate = 50;
 
-  float GiroX = 0.0;
+  float GiroY = 0.0;
   float GiroZ = 0.0;
 
   int tempo = 0;
   int grau_alvo = 0;
-  bool verifca_rampa = false;
+  bool verifica_rampa = false;
   bool verifica_obstaculo = false;
   bool verifica_regate = false;
 // =================================== //
