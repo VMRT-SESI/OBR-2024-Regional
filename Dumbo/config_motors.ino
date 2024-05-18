@@ -1,6 +1,10 @@
-/* Configurações dos estados que os motores podem apresentar durante a 
-  execução do run()
-*/
+/**
+  *  Configurações dos estados que os motores podem apresentar durante a 
+  *  execução do run()
+  *
+  * - Última atualização
+  * @date 18/05/2024
+  */
 
 void setupMotors(int state) {
   if (state == 0) {
@@ -30,7 +34,7 @@ void reverso(int move) {
   motor_esquerda_fundo.move(-move);
 }
 
-void frente() {
+void frear() {
   motor_direita_frente.move(0);
   motor_direta_fundo.move(0);
   motor_esquerda_frente.move(0);

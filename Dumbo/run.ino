@@ -1,6 +1,7 @@
 // Logíca prncipal executada pelo robô, identificando casos e realizando as ações
 
 void run() {
+  setupMotors(1);
   while (!verifica_regate) {
     GiroY = leitura_angulo_Y();
     GiroZ = leitura_angulo_Z();

@@ -1,7 +1,11 @@
-/*  Configuração das informações coletas pelo MPU6050 - Giroscópio,
-  para detecção da inclição e movimentação do robô, durante a execução
-  do run()
-*/
+/**  
+  *  Configuração das informações coletas pelo MPU6050 - Giroscópio,
+  *  para detecção da inclição e movimentação do robô, durante a execução
+  *  do run()
+  *
+  * - Última atualização
+  * @date 18/05/2024
+  */
 
 float leitura_angulo_Z() {
   mpu6050.update();

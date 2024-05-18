@@ -1,7 +1,10 @@
-/* Configurações gerais em relação ao funcionamento/modos leds que podem apresentadar 
-   diferentes estados durante o run();
-*/
-
+/**
+  *   Configurações gerais em relação ao funcionamento/modos leds que podem apresentadar 
+  *   diferentes estados durante o run();
+  *
+  * - Última atualização
+  * @date 18/05/2024
+  */
 const int time = 2500;
 
 void led_on(int pin){
