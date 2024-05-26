@@ -1,14 +1,13 @@
 // Logíca prncipal executada pelo robô, identificando casos e realizando as ações
 
 void run() {
-  setupMotors(1);
   while (!verifica_regate) {
     GiroY = leitura_angulo_Y();
     GiroZ = leitura_angulo_Z();
 
     segue_linha();
 
-    if (distancia_frente() < 50) {
+    if (distancia_frente() < 10) {
       // Deviar de obstáculo
     }
 
