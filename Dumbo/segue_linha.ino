@@ -6,16 +6,16 @@ void segue_linha() {
   sensorExtDireita = analogRead(sensor5);
 
   if((sensorEsquerda > preto) && (sensorDireita > preto)) {
-    andar_frente(velocidade_constate);
+    andar(velocidade_constate);
   }else if((sensorEsquerda < preto) && (sensorDireita > preto)) {
     if((sensorMeio > preto) && (sensorExtDireita > preto)) {
-      curva_direita(velocidade_curva);
+      curva_direita_eixo(velocidade_curva);
     } else {
       curva_direita(velocidade_curva);
     }
   } else if((sensorEsquerda > preto) && (sensorDireita < preto)){
     if((sensorMeio > preto) && (sensorEsquerda > preto) && (sensorExtEsquerda > preto)) {
-      curva_esquerda(velocidade_curva);
+      curva_esquerda_eixo(velocidade_curva);
     } else {
       curva_esquerda(velocidade_curva);
     }
@@ -26,10 +26,10 @@ void segue_linha() {
     (sensorDireita < preto) && 
     (sensorExtDireita < preto)
     ) {
-      andar_frente(20);
+      andar(20);
       delay(2500);
-      andar_frente(velocidade_constate);
+      andar(velocidade_constate);
   } else {
-    andar_frente(velocidade_constate);
+    andar(velocidade_constate);
   }
 }

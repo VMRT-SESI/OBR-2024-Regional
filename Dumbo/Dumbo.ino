@@ -1,44 +1,18 @@
 #include <MPU6050_tockn.h>
-#include "stepperMotor.h"
 #include <HCSR04.h>
 #include <Servo.h>
 #include <Wire.h>
+#include "motor.h"
 
 // Definição dos motores
-stepperMotor motor_esquerda_frente(
-  3,     // Step pin
-  6,     // Direction pin
-  8,     // Enable pin
-  400,   // Resolution
-  4490,  // Minimum velocity
-  256    // Maximum velocity
+motor motorLeft(
+  6,      // motorPinIn1
+  7       // motorPinIn2
 );
 
-stepperMotor motor_esquerda_fundo(
-  2,     // Step pin
-  5,     // Direction pin
-  8,     // Enable pin
-  400,   // Resolution
-  4490,  // Minimum velocity
-  256    // Maximum velocity
-);
-
-stepperMotor motor_direita_frente(
-  4,     // Step pin
-  7,     // Direction pin
-  8,     // Enable pin
-  400,   // Resolution
-  4490,  // Minimum velocity
-  256    // Maximum velocity
-);
-
-stepperMotor motor_direta_fundo(
-  12,    // Step pin
-  13,    // Direction pin
-  8,     // Enable pin
-  400,   // Resolution
-  4490,  // Minimum velocity
-  256    // Maximum velocity
+motor motorRight(
+  8,      // motorPinIn1
+  9       // motorPinIn2
 );
 
 // Giroscópio
@@ -134,7 +108,6 @@ int verde = 50;
   float GiroZ = 0.0;
 
   int tempo = 0;
-  int grau_alvo = 0;
   bool verifica_rampa = false;
   bool verifica_obstaculo = false;
   bool verifica_regate = false;
@@ -142,7 +115,6 @@ int verde = 50;
 
 void setup() {
   Serial.begin(115200);
-  setupMotors(0);
   Wire.begin();
   mpu6050.begin();
   mpu6050.calcGyroOffsets(true);
@@ -187,7 +159,6 @@ void setup() {
 
   // Botão
   pinMode(push_button_start, INPUT_PULLUP);
-
 
   // Sensores de cor
   digitalWrite(sensor_verde_esq_S0, HIGH);
