@@ -1,56 +1,51 @@
 /**
-  *  Configurações dos estados que os motores podem apresentar durante a 
-  *  execução do run()
+  * Configuração dos estados que o motor apresenta durante a execução do run()
   *
   * - Última atualização
-  * @date 18/05/2024
-  */
+  * @date 26/05/2024
+*/
 
-void setupMotors(int state) {
-  if (state == 0) {
-    motor_direita_frente.off();
-    motor_direta_fundo.off();
-    motor_esquerda_frente.off();
-    motor_esquerda_fundo.off();
-  } else {
-    motor_direita_frente.on();
-    motor_direta_fundo.on();
-    motor_esquerda_frente.on();
-    motor_esquerda_fundo.on();
+void andar(int move) {
+  motorLeft.run(move);
+  motorRight.run(move);
+}
+
+// Curva esquerda
+
+void curva_esquerda(int move) {
+  motorLeft.run(move);
+  motorRight.off();
+}
+
+void curva_esquerda_eixo(int move) {
+  motorLeft.run(move);
+  motorRight.run(-move);
+}
+
+void curva_esqueda_gyro(int move, int grau_alvo) {
+  GiroY = 0.0;
+
+  while(GiroY != grau_alvo){
+    curva_esquerda_eixo(move);
   }
 }
 
-void andar_frente(int move) {
-  motor_direita_frente.move(move);
-  motor_direta_fundo.move(move);
-  motor_esquerda_frente.move(move);
-  motor_esquerda_fundo.move(move);
-}
-
-void reverso(int move) {
-  motor_direita_frente.move(-move);
-  motor_direta_fundo.move(-move);
-  motor_esquerda_frente.move(-move);
-  motor_esquerda_fundo.move(-move);
-}
-
-void frear() {
-  motor_direita_frente.move(0);
-  motor_direta_fundo.move(0);
-  motor_esquerda_frente.move(0);
-  motor_esquerda_fundo.move(0);
-}
-
-void curva_esquerda(int move) {
-  motor_direita_frente.move(0);
-  motor_direta_fundo.move(0);
-  motor_esquerda_frente.move(move);
-  motor_esquerda_fundo.move(move);
-}
+// Curva direita
 
 void curva_direita(int move) {
-  motor_direita_frente.move(move);
-  motor_direta_fundo.move(move);
-  motor_esquerda_frente.move(0);
-  motor_esquerda_fundo.move(0);
+  motorLeft.off();
+  motorRight.run(move);
+}
+
+void curva_direita_eixo(int move) {
+  motorLeft.run(move);
+  motorRight.run(-move);
+}
+
+void curva_direita_gyro(int move, int grau_alvo) {
+  GiroY = 0.0;
+
+  while(GiroY != grau_alvo){
+    curva_direita_eixo(move);
+  }
 }
