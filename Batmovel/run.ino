@@ -31,7 +31,7 @@ void run() {
 }
 
 void aguardo() {
-  led_blink(led_leitura_preto_vermelho);
-  led_blink(led_curva_direita_vermelho);
-  led_blink(led_curva_esquerda_vermelho);
+  led_leitura_preto_vermelho.blink();
+  led_curva_direita_vermelho.blink();
+  led_curva_esquerda_vermelho.blink();
 }

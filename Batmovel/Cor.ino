@@ -24,11 +24,11 @@ void leitura_verde() {
       (valorVerde_sensor_esquerdo < valorVermelho_sensor_esquerdo) &&  //Verifica se a cor verde foi detectada
       (valorVerde_sensor_esquerdo < valorAzul_sensor_esquerdo) && (valorBranco_sensor_esquerdo < 100)) {
       Serial.println("Curva com verde");
-      //curva_esquerda(velocidade_constate);
+      curva_esquerda(velocidade_constate);
     }
     delay(250);
     Serial.println("Curva com verde");
-    //curva_esquerda(velocidade_constate);
+    curva_esquerda(velocidade_constate);
   } else {
     Serial.println("Não é curva");
   }
@@ -41,10 +41,10 @@ void leitura_verde() {
       (valorVerde_sensor_direito < valorVermelho_sensor_direito) &&  //Verifica se a cor verde foi detectada
       (valorVerde_sensor_direito < valorAzul_sensor_direito) && (valorBranco_sensor_direito < 100)) {
       Serial.println("Curva com verde");
-      //curva_direita(velocidade_constate);
+      curva_direita(velocidade_constate);
     }
     Serial.println("Curva com verde");
-    //curva_direita(velocidade_constate);
+    curva_direita(velocidade_constate);
   } else {
     Serial.println("Não é curva");
   }

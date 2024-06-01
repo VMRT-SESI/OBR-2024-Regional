@@ -3,6 +3,7 @@
 #include <Servo.h>
 #include <Wire.h>
 #include "motor.h"
+#include "led_class.h"
 
 // Definição dos motores
 motor motorLeft(
@@ -60,17 +61,18 @@ UltraSonicDistanceSensor ultra_lateral_esquerda(T_PIN_lat, E_PIN_lat);
 UltraSonicDistanceSensor ultra_lateral_direta(T_PIN_late, E_PIN_late);
 
 // Declaração LEDS
-int led_detecta_obstaculo_amarelo = 28;
-int led_detecta_rampa_amarelo = 29;
-int led_detecta_resgate = 30;
 
-int led_curva_esquerda_vermelho = 31;
-int led_curva_direita_vermelho = 32;
-int led_leitura_preto_vermelho = 33;
-int led_casos_vermelho = 34;
+led led_detecta_obstaculo_amarelo(28);
+led led_detecta_rampa_amarelo(29);
+led led_detecta_resgate(30);
 
-int led_detecta_esquerda_verde = 35;
-int led_detecta_direta_verde = 37;
+led led_curva_esquerda_vermelho(31);
+led led_curva_direita_vermelho(32);
+led led_leitura_preto_vermelho(33);
+led led_casos_vermelho(34);
+
+led led_detecta_esquerda_verde(35);
+led led_detecta_direta_verde(37);
 
 // Declaração botão
 const int push_button_start = 36;
@@ -138,19 +140,6 @@ void setup() {
   pinMode(sensor_verde_dir_S2, OUTPUT);
   pinMode(sensor_verde_dir_S3, OUTPUT);
   pinMode(sensor_verde_dir_OUT, INPUT);
-
-  // Leds
-  pinMode(led_detecta_obstaculo_amarelo, OUTPUT);
-  pinMode(led_detecta_rampa_amarelo, OUTPUT);
-  pinMode(led_detecta_resgate, OUTPUT);
-
-  pinMode(led_casos_vermelho, OUTPUT);
-  pinMode(led_curva_direita_vermelho, OUTPUT);
-  pinMode(led_curva_esquerda_vermelho, OUTPUT);
-  pinMode(led_leitura_preto_vermelho, OUTPUT);
-
-  pinMode(led_detecta_direta_verde, OUTPUT);
-  pinMode(led_detecta_esquerda_verde, OUTPUT);
 
   // Motores
   s.attach(motor_tower_garra);

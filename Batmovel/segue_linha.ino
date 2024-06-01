@@ -7,7 +7,9 @@ void segue_linha() {
 
   if((sensorEsquerda > preto) && (sensorDireita > preto)) {
     andar(velocidade_constate);
-  }else if((sensorEsquerda < preto) && (sensorDireita > preto)) {
+  } else if((sensorEsquerda < preto) && (sensorDireita > preto)) {
+    leitura_verde();
+
     if((sensorMeio > preto) && (sensorExtDireita > preto)) {
       curva_direita_eixo(velocidade_curva);
     } else {
@@ -15,6 +17,8 @@ void segue_linha() {
     }
   } else if((sensorEsquerda > preto) && (sensorDireita < preto)){
     if((sensorMeio > preto) && (sensorEsquerda > preto) && (sensorExtEsquerda > preto)) {
+      leitura_verde();
+
       curva_esquerda_eixo(velocidade_curva);
     } else {
       curva_esquerda(velocidade_curva);
@@ -27,6 +31,7 @@ void segue_linha() {
     (sensorExtDireita < preto)
     ) {
       andar(20);
+      leitura_verde();
       delay(2500);
       andar(velocidade_constate);
   } else {
