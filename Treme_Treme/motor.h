@@ -1,6 +1,7 @@
 /**
   * Classe dos motores 
-  * @author Matheus Gabriel
+  * @author VMRT
+  * @author Matheus Gabriel (@Matheus-Gabriel07)
   * @version 1.0
   * 
   * - Última atualização
@@ -32,7 +33,7 @@ public:
   }
 
   /**
-    *@brief Inicialização da classe
+    * @brief Inicialização da classe
   */
   void init() {
     pinMode(motorPinIn1, OUTPUT);
@@ -41,16 +42,33 @@ public:
     off();
   }
 
+ /**
+   * @brief Inicialização dos motores no sentido horário
+ */
   void on() {
     digitalWrite(motorPinIn1, 1);
-    digitalWrite(motorPinIn2, 1);
+    digitalWrite(motorPinIn2, 0);
   }
 
+  /**
+    * @brief Paralização dos motores
+  */
   void off() {
     digitalWrite(motorPinIn1, 0);
     digitalWrite(motorPinIn2, 0);
   }
 
+  /**
+    * @brief Método para girar os motores no sentido desejado
+    * @param move: velocidade desejada
+    *
+    * @example:
+    *    motorExample.run(80);
+    *    motorExample.run(-80);
+    *
+    * Se a velocidade for negativa, o motor irá girar no sentido anti-horário,
+    * caso contrário, sentido horário
+  */
   void run(int move) {
     if (move < 0) {
       analogWrite(motorPinIn1, 0);
