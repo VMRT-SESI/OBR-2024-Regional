@@ -16,10 +16,10 @@
 // --------------------------
 //        Regulagem
 
-int velocidade = 125;
+int velocidade = 80;
 int velocidade_rampa = 125;
-int preto = 110;
-int branco = 50;
+int preto = 50;
+int branco = 200;
 int tempo = 0;
 
 //     - Controle -
@@ -31,6 +31,13 @@ bool inclinacao_rampa = 0;
 bool obstaculo_encontrado = 0;
 
 // --------------------------
+
+enum EstadosRobo {
+  estado_segue_linha,
+  estado_obstaculo_encontrado,
+  estado_rampa_encontrada
+};
+EstadosRobo EstadoAtual = estado_segue_linha;
 
 // Giroscópio
 MPU6050 mpu6050(Wire);
@@ -46,11 +53,11 @@ int sensor4 = A12;
 int sensor5 = A11;
 
 // Variáveis de armazenamento dos valores coletados nos sensores de refletância
-int sensorExtEsquerda, 
-    sensorEsquerda, 
-    sensorMeio, 
-    sensorDireita, 
-    sensorExtDireita = 0;
+int sensorExtEsquerda,
+  sensorEsquerda,
+  sensorMeio,
+  sensorDireita,
+  sensorExtDireita = 0;
 
 // Pinos de conexao do modulo da esquerda
 #define pinS0E 35
@@ -78,13 +85,13 @@ unsigned int valorVerdeD = 0;
 unsigned int valorAzulD = 0;
 unsigned int valorBrancoD = 0;
 
-#define T_PIN_frente 25
-#define E_PIN_frente 24
+#define T_PIN_frente 24
+#define E_PIN_frente 25
 UltraSonicDistanceSensor ultra_frente(T_PIN_frente, E_PIN_frente);
 
 // Motores
-motor motorA(6,7);
-motor motorB(8,9);
+motor motorA(6, 7);
+motor motorB(8, 9);
 
 // LEDs
 led ledVermE(44);
@@ -93,9 +100,9 @@ led ledVermD(48);
 
 void setup() {
   // Configurações inicializadas
-  ledMeio.blink();
-  ledVermD.blink();
-  ledVermE.blink();
+  ledMeio.on();
+  ledVermD.on();
+  ledVermE.on();
 
   Serial.begin(2400);
   Wire.begin();
@@ -111,7 +118,7 @@ void setup() {
 
   //Saídas dos Pinos da esquerda
   pinMode(pinS0E, OUTPUT);
-  pinMode(pinS1E, OUTPUT); 
+  pinMode(pinS1E, OUTPUT);
   pinMode(pinS2E, OUTPUT);
   pinMode(pinS3E, OUTPUT);
   pinMode(pinOutE, INPUT);
@@ -139,5 +146,21 @@ void detectaCor();
 
 void loop() {
   distancia_frente = ultra_frente.measureDistanceCm();
-  segue_linha();
+  Serial.println(distancia_frente);
+
+  if (distancia_frente <= 15) {
+    EstadoAtual = estado_obstaculo_encontrado;
+  }
+  switch(EstadoAtual) {
+    case estado_segue_linha:
+    segue_linha();
+    break;
+
+    case estado_obstaculo_encontrado:
+    devioObstaculo();
+    break;
+
+    case estado_rampa_encontrada:
+    break;
+  }
 }

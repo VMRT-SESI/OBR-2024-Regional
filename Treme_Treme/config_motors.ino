@@ -37,12 +37,10 @@ void curva_noventa_esquerda() {
   for(tempo = 0; tempo < 125; tempo++){
     curvaEsquerda(150);
   }
-  andar(0);
 }
 
 void curva_noventa_direita() {
   for(tempo = 0; tempo < 110; tempo++){
     curvaDireita(150);
   }
-  andar(0);
 }

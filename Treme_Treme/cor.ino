@@ -13,22 +13,22 @@ void leitura_verde() {
   Serial.print(valorAzulE);
 
   Serial.print(" Branco : ");
-  Serial.print(valorBrancoE);
-  Serial.println();
+  // Serial.print(valorBrancoE);
+  // Serial.println();
 
-  //Mostra valores da direita no serial monitor
-  Serial.print("Vermelho :");
-  Serial.print(valorVermelhoD);
+  // //Mostra valores da direita no serial monitor
+  // Serial.print("Vermelho :");
+  // Serial.print(valorVermelhoD);
 
-  Serial.print(" Verde : ");
-  Serial.print(valorVerdeD);
+  // Serial.print(" Verde : ");
+  // Serial.print(valorVerdeD);
 
-  Serial.print(" Azul : ");
-  Serial.print(valorAzulD);
+  // Serial.print(" Azul : ");
+  // Serial.print(valorAzulD);
 
-  Serial.print(" Branco : ");
-  Serial.print(valorBrancoD);
-  Serial.println();
+  // Serial.print(" Branco : ");
+  // Serial.print(valorBrancoD);
+  // Serial.println();
 
   //Verifica se a cor vermelha foi detectada
   if (
