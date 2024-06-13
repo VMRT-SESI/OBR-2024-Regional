@@ -7,7 +7,7 @@ void segue_linha() {
   sensorEsquerda = analogRead(sensor4);
   sensorExtEsquerda = analogRead(sensor5);
 
-  Serial.print(verde_direito);
+  Serial.print(sensorMeio);
   Serial.print(verde_esquerdo);
   Serial.println();
 
@@ -25,30 +25,30 @@ void segue_linha() {
 }
 
 void identifica_casos() {
+  leitura_verde();
   // Todos os sensores a partir do meio para esquerda, estão vendo preto e verde 
   if (
-    sensorMeio < preto && 
     sensorEsquerda < preto && 
     sensorExtEsquerda < preto && 
     verde_esquerdo == 1
   ) {
-    curvaEsquerda(150);
-    delay(2500);
+    Serial.println("Curva esqueca com verde");
+    curva_noventa_esquerda();
+    delay(2000);
   }
 
   // Todos os sensores a partir do meio para direita, estão vendo preto e verde 
   if (
-    sensorMeio < preto && 
     sensorDireita < preto && 
     sensorExtDireita < preto && 
     verde_direito == 1
   ) {
-    curvaEsquerda(150);
+    curvaDireita(150);
     delay(2500);
   }
 
   // Todos os sensores estão vendo o preto
-  if (
+  else if (
     sensorExtDireita < preto && 
     sensorDireita < preto && 
     sensorMeio < preto && 

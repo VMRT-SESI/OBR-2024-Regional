@@ -34,9 +34,10 @@ void meia_volta() {
 }
 
 void curva_noventa_esquerda() {
-  for(tempo = 0; tempo < 125; tempo++){
-    curvaEsquerda(150);
+  for(tempo = 0; tempo < 90; tempo++){
+    curvaEsquerda(100);
   }
+  
 }
 
 void curva_noventa_direita() {
