@@ -7,8 +7,7 @@ void segue_linha() {
   sensorEsquerda = analogRead(sensor4);
   sensorExtEsquerda = analogRead(sensor5);
 
-  Serial.print(sensorMeio);
-  Serial.print(verde_esquerdo);
+  //Serial.print(sensorExtEsquerda);
   Serial.println();
 
   if (sensorDireita > preto && sensorEsquerda > preto) {
@@ -32,8 +31,8 @@ void identifica_casos() {
     sensorExtEsquerda < preto && 
     verde_esquerdo == 1
   ) {
-    Serial.println("Curva esqueca com verde");
-    curva_noventa_esquerda();
+    Serial.println("Curva esquerda com verde");
+    curva_noventa_direita();
     delay(2000);
   }
 
@@ -43,25 +42,52 @@ void identifica_casos() {
     sensorExtDireita < preto && 
     verde_direito == 1
   ) {
-    curvaDireita(150);
+    Serial.println("Curva esquerda com verde");
+    curva_noventa_esquerda();
     delay(2500);
   }
 
   // Todos os sensores estão vendo o preto
-  else if (
+  if (
+    sensorExtDireita < preto && 
+    sensorDireita < preto && 
+    sensorMeio < preto && 
+    sensorEsquerda < preto && 
+    sensorExtEsquerda < preto &&
+    verde_direito == 1 &&
+    verde_esquerdo == 1
+  ) {
+    meia_volta();
+  } else if (
+    sensorExtDireita < preto && 
+    sensorDireita < preto && 
+    sensorMeio < preto && 
+    sensorEsquerda < preto && 
+    sensorExtEsquerda < preto &&
+    verde_direito == 1
+  ) {
+    Serial.println("Curva esquerda com verde");
+    curva_noventa_esquerda();
+    delay(2500);
+
+  } else if (
+    sensorExtDireita < preto && 
+    sensorDireita < preto && 
+    sensorMeio < preto && 
+    sensorEsquerda < preto && 
+    sensorExtEsquerda < preto &&
+    verde_esquerdo == 1
+  ) {
+    Serial.println("Curva esquerda com verde");
+    curva_noventa_direita();
+    delay(2500);
+  } else if (
     sensorExtDireita < preto && 
     sensorDireita < preto && 
     sensorMeio < preto && 
     sensorEsquerda < preto && 
     sensorExtEsquerda < preto
   ) {
-    parar();
-    delay(500);
-    for (int i = 0; i < 60; i++) {
-      andar(80);
-    }
-    parar();
-    Serial.println(verde_direito);
-    Serial.println(verde_esquerdo);
+    andar(100);
   }
 }

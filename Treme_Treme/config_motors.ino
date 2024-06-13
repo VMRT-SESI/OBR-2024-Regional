@@ -15,18 +15,18 @@ void parar() {
   motorB.off();
 }
 
-void curvaEsquerda(int velocidade){
+void curvaEsquerda(int velocidade) {
   motorA.run(velocidade);
   motorB.run(-velocidade);
 }
 
-void curvaDireita(int velocidade){
+void curvaDireita(int velocidade) {
   motorA.run(-velocidade);
   motorB.run(velocidade);
 }
 
 void meia_volta() {
-  for(tempo = 0; tempo < 200; tempo++){
+  for (tempo = 0; tempo < 200; tempo++) {
     Serial.println(tempo);
     curvaDireita(150);
   }
@@ -34,14 +34,20 @@ void meia_volta() {
 }
 
 void curva_noventa_esquerda() {
-  for(tempo = 0; tempo < 90; tempo++){
-    curvaEsquerda(100);
+  tempo = 0;
+  for (tempo = 0; tempo < 110; tempo++) {
+    curvaEsquerda(110);
   }
-  
+  parar();
+  delay(1500);
 }
 
 void curva_noventa_direita() {
-  for(tempo = 0; tempo < 110; tempo++){
-    curvaDireita(150);
+  tempo = 0;
+  for (tempo = 0; tempo < 110; tempo++) {
+    curvaDireita(110);
+    Serial.println(tempo);
   }
+  parar();
+  delay(1500);
 }

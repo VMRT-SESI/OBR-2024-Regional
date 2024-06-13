@@ -3,16 +3,16 @@ void leitura_verde() {
   detectaCor();
 
   //Mostra valores da esquerda no serial monitor
-  Serial.print("Vermelho :");
-  Serial.print(valorVermelhoE);
+  // Serial.print("Vermelho :");
+  // Serial.print(valorVermelhoE);
 
-  Serial.print(" Verde : ");
-  Serial.print(valorVerdeE);
+  // Serial.print(" Verde : ");
+  // Serial.print(valorVerdeE);
 
-  Serial.print(" Azul : ");
-  Serial.print(valorAzulE);
+  // Serial.print(" Azul : ");
+  // Serial.print(valorAzulE);
 
-  Serial.print(" Branco : ");
+  // Serial.print(" Branco : ");
   // Serial.print(valorBrancoE);
   // Serial.println();
 

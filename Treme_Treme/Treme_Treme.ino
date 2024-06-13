@@ -16,9 +16,9 @@
 // --------------------------
 //        Regulagem
 
-int velocidade = 100;
+int velocidade = 85;
 int velocidade_rampa = 125;
-int preto = 750;
+int preto = 90;
 int branco = 200;
 int tempo = 0;
 
@@ -146,43 +146,22 @@ void detectaCor();
 
 void loop() {
   distancia_frente = ultra_frente.measureDistanceCm();
-  //Serial.println(distancia_frente);
+  Serial.println(distancia_frente);
 
-  // if (distancia_frente <= 15 && distancia_frente > 0) {
-  //   EstadoAtual = estado_obstaculo_encontrado;
-  // }
-  // switch(EstadoAtual) {
-  //   case estado_segue_linha:
-  //   segue_linha();
-  //   break;
+  if (distancia_frente <= 15 && distancia_frente > 0) {
+    EstadoAtual = estado_obstaculo_encontrado;
+  }
+  
+  switch(EstadoAtual) {
+    case estado_segue_linha:
+    segue_linha();
+    break;
 
-  //   case estado_obstaculo_encontrado:
-  //   devioObstaculo();
-  //   break;
+    case estado_obstaculo_encontrado:
+    devioObstaculo();
+    break;
 
-  //   case estado_rampa_encontrada:
-  //   break;
-  // }
-  for(int i = 0; i < 90; i++){
-    curvaEsquerda(100);
+    case estado_rampa_encontrada:
+    break;
   }
-  parar();
-  delay(1500);
-  for(int i = 0; i < 90; i++){
-    curvaDireita(100);
-  }
-  parar();
-  delay(1500);
-  andar(150);
-  delay(2500);
-  for(int i = 0; i < 90; i++){
-    curvaEsquerda(100);
-  }
-  parar();
-  delay(1500);
-  for(int i = 0; i < 90; i++){
-    curvaDireita(100);
-  }
-  parar();
-  delay(1500);
 }
